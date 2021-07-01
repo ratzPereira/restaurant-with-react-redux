@@ -1,5 +1,5 @@
 import { useState, useRef } from "react";
-
+import { useHistory } from "react-router-dom";
 import classes from "./AuthForm.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { authActions } from "../../store/auth-slice";
@@ -9,6 +9,8 @@ const AuthForm = () => {
   const [isLogin, setIsLogin] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
   //const [hasError, setError] = useState();
+
+  const history = useHistory();
 
   const dispatch = useDispatch();
 
@@ -73,6 +75,7 @@ const AuthForm = () => {
         //login
         console.log(data.idToken);
         dispatch(authActions.login(data.idToken));
+        history.replace("/");
       })
       .catch((error) => {
         alert(error.message);
