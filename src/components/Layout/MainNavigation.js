@@ -1,11 +1,13 @@
 import { Link } from "react-router-dom";
 
 import classes from "./MainNavigation.module.css";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { authActions } from "../../store/auth-slice";
 
 const MainNavigation = () => {
   const dispatch = useDispatch();
+
+  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
 
   const logoutHandler = (event) => {
     event.preventDefault();
@@ -25,19 +27,27 @@ const MainNavigation = () => {
           <li>
             <Link to="/menu">Menu</Link>
           </li>
-          <li>
-            <Link to="/profile">Profile</Link>
-          </li>
-          <li>
-            <Link to="/schedule">Schedule</Link>
-          </li>
-          <li>
-            <Link to="/auth">Login</Link>
-          </li>
+          {isLoggedIn && (
+            <li>
+              <Link to="/profile">Profile</Link>
+            </li>
+          )}
+          {isLoggedIn && (
+            <li>
+              <Link to="/schedule">Schedule</Link>
+            </li>
+          )}
+          {!isLoggedIn && (
+            <li>
+              <Link to="/auth">Login</Link>
+            </li>
+          )}
 
-          <li>
-            <button onClick={logoutHandler}>Logout</button>
-          </li>
+          {isLoggedIn && (
+            <li>
+              <button onClick={logoutHandler}>Logout</button>
+            </li>
+          )}
         </ul>
       </nav>
     </header>
