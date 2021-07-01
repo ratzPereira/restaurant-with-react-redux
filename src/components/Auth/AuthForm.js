@@ -1,16 +1,22 @@
 import { useState, useRef } from "react";
 
 import classes from "./AuthForm.module.css";
+import { useDispatch, useSelector } from "react-redux";
+import { authActions } from "../../store/auth-slice";
 
 const AuthForm = () => {
+  const isAuthenticated = useSelector((state) => state.auth.isLoggedIn);
   const [isLogin, setIsLogin] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
   //const [hasError, setError] = useState();
+
+  const dispatch = useDispatch();
 
   const emailInputRef = useRef();
   const passwordInputRef = useRef();
 
   const switchAuthModeHandler = async () => {
+    console.log(isAuthenticated);
     setIsLogin((prevState) => !prevState);
   };
 
@@ -63,6 +69,10 @@ const AuthForm = () => {
         console.log(data);
 
         //TODO: do something with data, like store the token
+
+        //login
+        console.log(data.idToken);
+        dispatch(authActions.login(data.idToken));
       })
       .catch((error) => {
         alert(error.message);
