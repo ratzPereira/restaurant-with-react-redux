@@ -16,11 +16,14 @@ const plateList = plates.map((item) => (
 
 const MenuList = () => {
   return (
-    <section className={classes.meals}>
-      <Card>
-        <ul>{plateList}</ul>
-      </Card>
-    </section>
+    <>
+      <h1 className={classes.menuTitle}>Our delicious Menu</h1>
+      <section className={classes.meals}>
+        <Card>
+          <ul>{plateList}</ul>
+        </Card>
+      </section>
+    </>
   );
 };
 
