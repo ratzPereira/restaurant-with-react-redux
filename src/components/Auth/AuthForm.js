@@ -74,6 +74,7 @@ const AuthForm = () => {
         }
       })
       .then((data) => {
+        console.log(data);
         dispatch(authActions.login(data.idToken));
         history.replace("/");
       })
