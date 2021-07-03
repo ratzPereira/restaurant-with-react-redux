@@ -14,7 +14,12 @@ const ProfileForm = () => {
     event.preventDefault();
 
     const newInputPassword = newPasswordInput.current.value;
-    console.log(userToken.payload);
+
+    if (newInputPassword.length < 6) {
+      alert("You password must be 6 characters long");
+      return;
+    }
+
     fetch(
       "https://identitytoolkit.googleapis.com/v1/accounts:update?key=AIzaSyCqaPjIXRvdeGWoG9b0xDiwen05gw2wqiY",
       {
@@ -28,14 +33,21 @@ const ProfileForm = () => {
           "Content-Type": "application/json",
         },
       }
-    ).then((response) => {
-      //TODO: //assuming that will work everytime
-      // TODO:     //redirect
-      const data = response.json();
-      console.log(data);
-      history.replace("/auth");
-    });
-    //TODO:proper error validation
+    )
+      .then((response) => {
+        if (!response.ok) {
+          return response.json().then(() => {
+            let errorMessage = "Could not change your password";
+            throw new Error(errorMessage);
+          });
+        }
+        const data = response.json();
+        console.log(data);
+        history.replace("/auth");
+      })
+      .catch((error) => {
+        alert(error.message);
+      });
   };
 
   return (

@@ -28,6 +28,13 @@ const AuthForm = () => {
     const passwordInput = passwordInputRef.current.value;
 
     //TODO: validation
+    let regexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+
+    if (!emailInput.match(regexEmail)) {
+      alert("Please insert valid email");
+      return;
+    }
+    if (!passwordInput.length > 6) return;
 
     setIsLoading(true);
 
@@ -67,13 +74,6 @@ const AuthForm = () => {
         }
       })
       .then((data) => {
-        //successful promise
-        console.log(data);
-
-        //TODO: do something with data, like store the token
-
-        //login
-        console.log(data.idToken);
         dispatch(authActions.login(data.idToken));
         history.replace("/");
       })
