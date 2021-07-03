@@ -7,6 +7,7 @@ const ProfileForm = () => {
   const newPasswordInput = useRef();
 
   const userToken = useSelector((state) => state.auth.token);
+  const user = useSelector((state) => state.auth.user);
 
   const history = useHistory();
 
@@ -53,7 +54,7 @@ const ProfileForm = () => {
   return (
     <form className={classes.form} onSubmit={changePasswordHandler}>
       <div className={classes.control}>
-        <label htmlFor="new-password">New Password</label>
+        <label htmlFor="new-password">New Password for {user}</label>
         <input
           type="password"
           id="new-password"

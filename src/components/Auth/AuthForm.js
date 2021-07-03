@@ -74,8 +74,13 @@ const AuthForm = () => {
         }
       })
       .then((data) => {
+        const expirationTime = new Date(
+          new Date().getTime() + +data.expiresIn * 1000
+        );
         console.log(data);
-        dispatch(authActions.login(data.idToken));
+        dispatch(authActions.login(data.idToken, expirationTime.toISOString()));
+        dispatch(authActions.setUser(emailInput));
+        localStorage.setItem("loggedUser", emailInput);
         history.replace("/");
       })
       .catch((error) => {
