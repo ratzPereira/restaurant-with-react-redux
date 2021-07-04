@@ -1,6 +1,7 @@
 const plates = [
   {
     Name: "Salmon",
+    id: "p1",
     Day: "Monday",
     Type: "Fish",
     Price: 8,
@@ -10,6 +11,7 @@ const plates = [
   {
     Name: "Lasagna",
     Day: "Monday",
+    id: "p2",
     Type: "Meat",
     Price: 7,
     img:
@@ -18,6 +20,7 @@ const plates = [
   {
     Name: "Sardines",
     Day: "Tuesday",
+    id: "p3",
     Type: "Fish",
     Price: 6,
     img:
@@ -26,6 +29,7 @@ const plates = [
   {
     Name: "Chicken",
     Day: "Tuesday",
+    id: "p4",
     Type: "Meat",
     Price: 5,
     img:
@@ -34,6 +38,7 @@ const plates = [
   {
     Name: "Fish And Chips",
     Day: "Wednesday",
+    id: "p5",
     Type: "Fish",
     Price: 5,
     img:
@@ -42,6 +47,7 @@ const plates = [
   {
     Name: "Hamburguer",
     Day: "Wednesday",
+    id: "p6",
     Type: "Meat",
     Price: 4,
     img:
@@ -50,6 +56,7 @@ const plates = [
   {
     Name: "Sushi",
     Day: "Thursday",
+    id: "p7",
     Type: "Fish",
     Price: 10,
     img:
@@ -58,6 +65,7 @@ const plates = [
   {
     Name: "Spaghetti bolognese",
     Day: "Thursday",
+    id: "p8",
     Type: "Meat",
     Price: 7,
     img:
@@ -66,6 +74,7 @@ const plates = [
   {
     Name: "Chicken",
     Day: "Friday",
+    id: "p9",
     Type: "Meat",
     Price: 6,
     img:
@@ -74,6 +83,7 @@ const plates = [
   {
     Name: "Fish Soup",
     Day: "Friday",
+    id: "p10",
     Type: "Fish",
     Price: 7,
 

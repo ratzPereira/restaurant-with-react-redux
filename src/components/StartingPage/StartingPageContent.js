@@ -5,7 +5,7 @@ const StartingPageContent = () => {
   return (
     <section className={classes.starting}>
       <div className={classes["main-image"]}>
-        <img src={backgroundImage} alt="image" />
+        <img src={backgroundImage} alt="Background" />
       </div>
       <h1>Welcome!</h1>
     </section>

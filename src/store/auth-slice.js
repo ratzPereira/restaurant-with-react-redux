@@ -35,16 +35,13 @@ const authSlice = createSlice({
       state.token = token;
       const realToken = token.payload;
       localStorage.setItem("token", JSON.stringify(realToken));
-      //
-      // const remainingTime = calculateRemainingTime(expirationTime);
-      //
-      // setTimeout(authSlice.actions.logout, 2000);
     },
     setUser(state, userName) {
       state.user = userName.payload;
     },
   },
 });
+
 console.log(authSlice.actions.logout);
 export const authActions = authSlice.actions;
 export default authSlice.reducer;

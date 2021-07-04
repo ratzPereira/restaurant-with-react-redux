@@ -9,7 +9,7 @@ const orderSlice = createSlice({
   name: "order",
   initialState: initialAuthState,
   reducers: {
-    addOrder() {},
+    addOrder(state, order, user) {},
   },
 });
 

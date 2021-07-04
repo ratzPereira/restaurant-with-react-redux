@@ -28,7 +28,7 @@ const AuthForm = () => {
     const passwordInput = passwordInputRef.current.value;
 
     //TODO: validation
-    let regexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    let regexEmail = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
 
     if (!emailInput.match(regexEmail)) {
       alert("Please insert valid email");
@@ -77,8 +77,13 @@ const AuthForm = () => {
         const expirationTime = new Date(
           new Date().getTime() + +data.expiresIn * 1000
         );
-        console.log(data);
+
         dispatch(authActions.login(data.idToken, expirationTime.toISOString()));
+
+        // setTimeout(() => {
+        //   dispatch(authActions.logout());
+        // }, 2000);
+
         dispatch(authActions.setUser(emailInput));
         localStorage.setItem("loggedUser", emailInput);
         history.replace("/");
